@@ -13,13 +13,14 @@ async function run()
                 + currentdate.getFullYear() + " "  
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds() + " ---- \n";
+                + currentdate.getSeconds() + " ----";
     
-    fs.appendFile('history.txt', datetime, err => {
+    fs.appendFile('history.txt', datetime+'\n', err => {
         if (err) {
           console.error(err);
         }
     });
+    console.log('\n'+datetime);
     for (var i=0; i < tickets.length; i++){
         await page.goto('https://www.google.com/search?q='+tickets[i]);
         await page.waitForSelector('xpath/'+chromeXPath);
@@ -34,7 +35,13 @@ async function run()
     }    
     
     // await page.screenshot({path: 'test.png', fullPage: true});
-    await browser.close();
-}
+    // await browser.close();
+    await sleep(60000*5); // 5 minutes
+    run();
+  }
 
 run();
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
