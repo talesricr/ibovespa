@@ -1,7 +1,7 @@
 {
   "name": "ibovespa",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "https://github.com/talesricr/ibovespa",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
